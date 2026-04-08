@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clausura — Data Sovereignty Platform</title>
-  <link rel="icon" type="image/png" href="favicon_32.png">
   <meta name="description" content="Enterprise AI, inside your perimeter. Clausura is a data sovereignty platform for regulated enterprises.">
+  <link rel="icon" type="image/png" href="favicon_32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -112,23 +112,55 @@
     <div class="divider-line"></div>
 
     <p class="proof">
-      Investor inquiries — <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="462e232a2a2906252a27333533342768272f">[email&#160;protected]</a></strong>
+      Investor inquiries — <strong><span id="proof-email"></span></strong>
     </p>
 
   </main>
 
   <footer>
-    <a href="/cdn-cgi/l/email-protection#355d5059595a7556595440464047541b545c"><span class="__cf_email__" data-cfemail="234b464f4f4c63404f4256505651420d424a">[email&#160;protected]</span></a>
+    <a id="footer-email-link"><span id="footer-email-text"></span></a>
     <div class="footer-dot"></div>
-    <a href="/cdn-cgi/l/email-protection#80e8e5ececefc0e3ece1f5f3f5f2e1aee1e9">Investor inquiries</a>
+    <a id="footer-investor-link">Investor inquiries</a>
     <div class="footer-dot"></div>
-    <span style="font-size:10px;letter-spacing:0.1em;color:rgba(245,243,239,0.2);">© 2026 Clausura</span>
+    <span style="font-size:10px;letter-spacing:0.1em;color:rgba(245,243,239,0.2);">&#169; 2026 Clausura</span>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
+    (function() {
+      var u = 'hello';
+      var d = 'clausura.ai';
+      var e = u + '@' + d;
+      var m = 'mailto:' + e;
+
+      var proofEl = document.getElementById('proof-email');
+      if (proofEl) proofEl.textContent = e;
+
+      var footerText = document.getElementById('footer-email-text');
+      if (footerText) footerText.textContent = e;
+
+      var footerLink = document.getElementById('footer-email-link');
+      if (footerLink) { footerLink.href = m; footerLink.style.cursor = 'pointer'; }
+
+      var investorLink = document.getElementById('footer-investor-link');
+      if (investorLink) { investorLink.href = m; investorLink.style.cursor = 'pointer'; }
+    })();
+
     window.formspree = window.formspree || function () {
       (formspree.q = formspree.q || []).push(arguments);
     };
     formspree('initForm', {
       formElement: '#access-form',
-      formId: 'xnjorro
+      formId: 'xnjorrow',
+      onSuccess: function () {
+        document.getElementById('access-form').style.display = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+      },
+      onError: function () {
+        document.getElementById('error-msg').style.display = 'block';
+      }
+    });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>
